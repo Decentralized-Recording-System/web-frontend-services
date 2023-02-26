@@ -3,11 +3,11 @@ import Sidebar from "./sidebar";
 
 const Layout = ({ children }: any) => {
   return (
-    <div className="flex w-full min-h-screen">
-      <div className="w-1/6 bg-slate-800">
+    <div className="flex items-center justify-center w-full h-screen ">
+      <div className="w-1/6 h-full bg-slate-800">
         <Sidebar />
       </div>
-      <div className="w-5/6">{children}</div>
+      <div className="w-5/6 h-full ">{children}</div>
     </div>
   );
 };

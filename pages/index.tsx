@@ -9,17 +9,19 @@ const Login = () => {
 
   const logIn = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    try {
-      axios
-        .post("http://localhost:5000/users/login", {
-          email: "in.spaymax3@gmail.co",
-          password: "1234",
-        })
-        .then((response) => {
-          Cookies.set("loggedin", "true");
-          router.push("/dashboard");
-        });
-    } catch (error) {}
+    Cookies.set("loggedin", "true");
+    router.push("/dashboard");
+    // try {
+    //   axios
+    //     .post("http://localhost:5000/users/login", {
+    //       email: "in.spaymax3@gmail.co",
+    //       password: "1234",
+    //     })
+    //     .then((response) => {
+    //       Cookies.set("loggedin", "true");
+    //       router.push("/dashboard");
+    //     });
+    // } catch (error) {}
   };
 
   return (
