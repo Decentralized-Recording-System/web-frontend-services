@@ -1,18 +1,20 @@
 import axios from "axios";
 import router from "next/router";
 import React from "react";
-
+import { url } from "../constant/url";
 const Activate = () => {
   const activate = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     try {
       axios
-        .post("http://localhost:5000/company/activate", {
+        .post(url + "/company/activate", {
           email: "in.spaymax3@gmail.co",
           code: "1234",
         })
         .then((response) => {
-          console.log(response);
+          if (response.status == 200) {
+            router.push("/");
+          }
         });
     } catch (error) {
       console.log("error");
@@ -24,11 +26,11 @@ const Activate = () => {
     e.preventDefault();
     try {
       axios
-        .post("http://localhost:5000/users/activate", {
+        .post(url + "/users/activate", {
           email: "in.spaymax3@gmail.co",
         })
         .then((response) => {
-          router.push("/");
+          // router.push("/");
         });
     } catch (error) {
       console.log("error");

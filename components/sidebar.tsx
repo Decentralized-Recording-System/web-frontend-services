@@ -1,13 +1,21 @@
 import React from "react";
+import Link from "next/link";
+import Cookies from "js-cookie";
+import router from "next/router";
 
 const Sidebar = () => {
+  const logOut = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    Cookies.remove;
+    router.push("/");
+  };
   return (
     <aside className="w-full " aria-label="Sidebar">
       <div className="px-3 py-4 overflow-y-auto rounded bg-slate-800">
         <ul className="space-y-2">
           <li>
-            <a
-              href="/"
+            <Link
+              href="/dashboard"
               className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               <svg
@@ -21,10 +29,10 @@ const Sidebar = () => {
                 <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
               </svg>
               <span className="ml-3 text-white">Dashboard</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="/new_user"
               className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
             >
@@ -44,10 +52,10 @@ const Sidebar = () => {
               <span className="flex-1 ml-3 text-white whitespace-nowrap">
                 New User
               </span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="/olduser"
               className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
             >
@@ -67,11 +75,11 @@ const Sidebar = () => {
               <span className="flex-1 ml-3 text-white whitespace-nowrap">
                 Old User
               </span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a
-              href="/modelContract"
+            <Link
+              href="/ModelPage"
               className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               <svg
@@ -90,10 +98,10 @@ const Sidebar = () => {
               <span className="flex-1 ml-3 text-white whitespace-nowrap">
                 Model Contracts
               </span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="/promotionCode"
               className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
             >
@@ -113,13 +121,13 @@ const Sidebar = () => {
               <span className="flex-1 ml-3 text-white whitespace-nowrap">
                 Promotion Code
               </span>
-            </a>
+            </Link>
           </li>
 
           <li>
-            <a
-              href="#"
+            <button
               className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+              onClick={logOut}
             >
               <svg
                 aria-hidden="true"
@@ -137,7 +145,7 @@ const Sidebar = () => {
               <span className="flex-1 ml-3 text-white whitespace-nowrap">
                 Log out
               </span>
-            </a>
+            </button>
           </li>
         </ul>
       </div>

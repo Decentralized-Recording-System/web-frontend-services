@@ -1,20 +1,22 @@
 import axios from "axios";
 import router from "next/router";
 import React from "react";
-
+import { url } from "../constant/url";
 const Register = () => {
   const register = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     try {
       axios
-        .post("http://localhost:5000/company/register", {
+        .post(url + "/company/register", {
           companyName: "nathain.com",
-          email: "in.spaymax3@gmail.co",
+          email: "in.spaywer@gmail.com",
           password: "1234",
           confirmPassword: "1234",
         })
         .then((response) => {
-          router.push("/activate");
+          if (response.status == 200) {
+            router.push("/activate");
+          }
         });
     } catch (error) {
       console.log("error");

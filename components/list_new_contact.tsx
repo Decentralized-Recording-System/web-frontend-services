@@ -1,10 +1,11 @@
 import React from "react";
 
 type ListProps = {
-  id: string;
-  address: string;
-  score: string;
-  contract: any;
+  id: any;
+  address: any;
+  score: any;
+  updateCount: any;
+  date: any;
 };
 
 const ListNewContact = (props: ListProps) => {
@@ -13,7 +14,8 @@ const ListNewContact = (props: ListProps) => {
       <div className="w-2/12 text-gray-50">{props.id}</div>
       <div className="w-4/12 text-gray-50">{props.address}</div>
       <div className="w-2/12 text-gray-50">{props.score}</div>
-      <div className="w-3/12 text-gray-50">{props.contract}</div>
+      <div className="w-3/12 text-gray-50">{props.updateCount}</div>
+      <div className="w-3/12 text-gray-50">{props.date}</div>
     </div>
   );
 };

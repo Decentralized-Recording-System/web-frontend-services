@@ -8,24 +8,21 @@ export default function middleware(req: {
   let url = req.url;
 
   if (!verify && url.includes("/dashboard")) {
-    return NextResponse.redirect("http://localhost:3000/");
+    return NextResponse.redirect("/");
   }
 
-  if (verify && url === "http://localhost:3000/") {
-    return NextResponse.redirect("http://localhost:3000/dashboard");
-  }
   if (!verify && url.includes("/activate")) {
-    return NextResponse.redirect("http://localhost:3000/");
+    return NextResponse.redirect("/");
   }
 
-  if (verify && url === "http://localhost:3000/") {
-    return NextResponse.redirect("http://localhost:3000/activate");
+  if (!verify && url === "/") {
+    return NextResponse.redirect("/");
   }
-  if (!verify && url.includes("/register")) {
-    return NextResponse.redirect("http://localhost:3000/");
-  }
+  // if (!verify && url.includes("/register")) {
+  //   return NextResponse.redirect("http://localhost:3000/register");
+  // }
 
-  if (verify && url === "http://localhost:3000/") {
-    return NextResponse.redirect("http://localhost:3000/register");
-  }
+  // if (verify && url === "http://localhost:3000/") {
+  //   return NextResponse.redirect("http://localhost:3000/register");
+  // }
 }
