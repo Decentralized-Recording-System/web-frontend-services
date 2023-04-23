@@ -3,7 +3,7 @@ import Layout from "../../components/layout";
 import { useRouter } from "next/router";
 import { url } from "../../constant/url";
 import axios from "axios";
-import { ObjectDetailData } from "../../model/type";
+import { ObjectDetailData, ObjectPromotionData } from "../../model/type";
 import Cookies from "js-cookie";
 import ListDetail from "../../components/list_detail";
 import Loader from "../../components/Loader";
@@ -13,7 +13,17 @@ const newUserForm = () => {
   const { id } = router.query;
   const [loading, setLoading] = useState(false);
   const [userData, setUserData] = useState<ObjectDetailData[]>();
+  const [promotionCode, setPromotionCode] = useState<ObjectPromotionData[]>();
   const user = Cookies.get("accessToken");
+  const [open, setOpen] = useState(false);
+  const [data, setData] = useState("");
+  const dropdownSelect = () => {
+    setOpen(!open);
+  };
+  const selectData = (data: any) => {
+    setData(data);
+    setOpen(false);
+  };
   useEffect(() => {
     try {
       if (id) {
@@ -26,6 +36,26 @@ const newUserForm = () => {
           })
           .then((data) => {
             setUserData(data["data"]);
+            setLoading(false);
+          });
+      }
+    } catch (error) {}
+  }, [id]);
+
+  useEffect(() => {
+    try {
+      if (id) {
+        setLoading(true);
+        axios
+          .get(url + `/promotion-code`, {
+            headers: {
+              Authorization: "Bearer " + user,
+            },
+          })
+          .then((data) => {
+            console.log(data["data"]["data"]);
+
+            setPromotionCode(data["data"]["data"]);
             setLoading(false);
           });
       }
@@ -87,26 +117,63 @@ const newUserForm = () => {
                   <label className="block mb-2 text-sm font-medium text-white">
                     Promotion
                   </label>
-                  <input
-                    type="text"
-                    id="first_name"
-                    className="bg-gray-50 border border-gray-300 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Promotion"
-                    required
-                  />
+
+                  <button
+                    id="dropdownDividerButton"
+                    data-dropdown-toggle="dropdownDivider"
+                    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    type="button"
+                    onClick={dropdownSelect}
+                  >
+                    {data != "" ? data : <p>Select Your promotion</p>}
+                    <svg
+                      className="w-4 h-4 ml-2"
+                      aria-hidden="true"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 9l-7 7-7-7"
+                      ></path>
+                    </svg>
+                  </button>
+
+                  {open ? (
+                    <div
+                      id="dropdownDivider"
+                      className="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+                    >
+                      <ul
+                        className="py-2 text-sm text-gray-700 dark:text-gray-200"
+                        aria-labelledby="dropdownDividerButton"
+                      >
+                        {promotionCode &&
+                          promotionCode.map((item: ObjectPromotionData) => {
+                            return (
+                              <li>
+                                <button
+                                  className="block w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                  onClick={() =>
+                                    selectData(item.promotionCodeName)
+                                  }
+                                >
+                                  {item.promotionCodeName}
+                                </button>
+                              </li>
+                            );
+                          })}
+                      </ul>
+                    </div>
+                  ) : (
+                    <div></div>
+                  )}
                 </div>
-                <div>
-                  <label className="block mb-2 text-sm font-medium dark:text-white">
-                    Content
-                  </label>
-                  <input
-                    type="text"
-                    id="first_name"
-                    className="bg-gray-50 border border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Content"
-                    required
-                  />
-                </div>
+
                 <button className="px-4 py-2 mt-4 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 ">
                   Request
                 </button>

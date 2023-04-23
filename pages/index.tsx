@@ -19,7 +19,7 @@ const Login = () => {
 
       axios
         .post(url + "/company/login", {
-          email: "in.spaywer@gmail.com",
+          email: "in.spaywer1@gmail.com",
           password: "1234",
         })
         .then((response) => {

@@ -16,7 +16,7 @@ const ModelPage = () => {
     try {
       setLoading(true);
       axios
-        .get(url + "/model-contract/company/data", {
+        .get(url + "/model-contract/company", {
           headers: {
             Authorization: "Bearer " + user,
           },

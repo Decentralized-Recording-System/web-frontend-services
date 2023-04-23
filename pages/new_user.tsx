@@ -21,7 +21,7 @@ const NewUser = () => {
           headers: {
             Authorization: "Bearer " + user,
           },
-        },)
+        })
         .then((data) => {
           setUserData(data["data"]);
           setLoading(false);

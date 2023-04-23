@@ -84,26 +84,26 @@ const createNewContract = () => {
           data: oldState,
         });
 
-        // axios
-        //   .post(
-        //     url + "/model-contract/company/create",
-        //     {
-        //       modelContractName: modelName,
-        //       data: [oldState],
-        //     },
-        //     {
-        //       headers: {
-        //         Authorization: "Bearer " + user,
-        //       },
-        //     }
-        //   )
-        //   .then((response) => {
-        //     if (response.status == 200) {
-        //       setLoading(false);
-        //     } else if (response.status == 400) {
-        //       console.log(response.status);
-        //     }
-        //   });
+        axios
+          .post(
+            url + "/model-contract/company/create",
+            {
+              modelContractName: modelName,
+              data: [oldState],
+            },
+            {
+              headers: {
+                Authorization: "Bearer " + user,
+              },
+            }
+          )
+          .then((response) => {
+            if (response.status == 200) {
+              setLoading(false);
+            } else if (response.status == 400) {
+              console.log(response.status);
+            }
+          });
       } catch (error) {
         console.log(error);
       }
