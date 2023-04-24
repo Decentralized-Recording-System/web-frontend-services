@@ -3,7 +3,7 @@ import { ObjectDetailData } from "../model/type";
 
 const ListDetail = (props: ObjectDetailData) => {
   return (
-    <div className="flex items-center justify-center h-10">
+    <div className="flex items-center justify-center h-10 pl-5">
       <div className="w-2/12 text-gray-50">{props.braking}</div>
       <div className="w-3/12 text-gray-50">{props.dangerousBrake}</div>
       <div className="w-2/12 text-gray-50">{props.dangerousTurn}</div>

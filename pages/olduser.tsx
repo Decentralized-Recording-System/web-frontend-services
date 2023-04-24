@@ -52,7 +52,7 @@ const OldUser = () => {
   return (
     <Layout>
       <div className="flex-col items-center justify-center w-full min-h-full px-4 bg-slate-900">
-        <div className="h-full py-6 pl-4 font-bold text">
+        <div className="h-full py-6 pl-4 font-bold ">
           <h1 className="text-white">Contract User </h1>
         </div>
         {loading ? (

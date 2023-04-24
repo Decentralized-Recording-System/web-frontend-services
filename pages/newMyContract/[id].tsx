@@ -47,29 +47,30 @@ const newUserForm = () => {
   return (
     <Layout>
       <div className="flex-col items-center justify-center w-full min-h-full px-4 bg-slate-900">
-        <div className="h-24">
-          <h1 className="text-white">View User Data</h1>
+        <div className="h-full py-6 pl-4 font-bold text">
+          <h1 className="text-white">View User Contract Data</h1>
         </div>
 
-        <div className="flex-col w-full h-full pb-2 bg-gray-700">
+        <div className="flex-col w-full h-full pb-2 bg-gray-800 rounded-lg">
           {loading ? (
             <Loader />
           ) : (
-            <div className="grid grid-cols-1 px-4 divide-y">
-              <div className="flex items-center justify-between h-32">
-                <div className="flex-col text-white">
-                  <h1>Address</h1>
-                  <p>{id}</p>
+            <div className="grid grid-cols-1 px-4 ">
+              <div className="flex items-center justify-between py-3">
+                <div className="flex text-white">
+                  <h1 className="font-bold">Address</h1>
+                  <p className="pl-4">{id}</p>
                 </div>
               </div>
-              <div className="flex items-center justify-between h-32">
-                <div className="flex-col text-white">
-                  <h1>Contract Value</h1>
-                  <p>{userData?.contractValue}</p>
+              <div className="flex items-center justify-between py-3">
+                <div className="flex mb-2 text-white">
+                  <h1 className="font-bold">Contract Value</h1>
+                  <p className="pl-4">{userData?.contractValue}</p>
                 </div>
               </div>
               <div className="flex-col items-center justify-center text-white">
-                <div className="flex-col px-4 pt-2 pb-1 bg-slate-400">
+                <h1 className="mb-2 font-bold">Contract Detail</h1>
+                <div className="flex-col px-3 pt-2 pb-1 bg-slate-700 rounded-xl">
                   {userData &&
                     userData.contractData.map((item: any) => {
                       for (const [key, value] of Object.entries(item)) {
@@ -78,14 +79,14 @@ const newUserForm = () => {
                     })}
                 </div>
               </div>
-              <div className="flex items-center justify-between h-32">
-                <div className="flex-col text-white">
-                  <h1>Start </h1>
-                  <p>{userData?.start.slice(0, 10)}</p>
+              <div className="flex items-center justify-between py-3">
+                <div className="flex text-white">
+                  <h1 className="font-bold">Start </h1>
+                  <p className="pl-4">{userData?.start.slice(0, 10)}</p>
                 </div>
-                <div className="flex-col text-white">
-                  <h1>Expire </h1>
-                  <p>{userData?.expire.slice(0, 10)}</p>
+                <div className="flex text-white">
+                  <h1 className="font-bold">Expire </h1>
+                  <p className="pl-4">{userData?.expire.slice(0, 10)}</p>
                 </div>
               </div>
             </div>

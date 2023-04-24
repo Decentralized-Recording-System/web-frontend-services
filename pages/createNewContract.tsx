@@ -115,8 +115,7 @@ const createNewContract = () => {
   return (
     <Layout>
       <div className="flex-col items-center justify-center w-full h-full px-4 overflow-y-auto bg-slate-900">
-        <h1 className="text-black ">Model Contract/New Contract/1</h1>
-        <div className="flex-col w-full px-5 pt-5 pb-5 ">
+        <div className="flex-col w-full px-5 pt-5 pb-5 bg-gray-700">
           <label className="block mb-2 text-sm font-medium text-white">
             Model Name
           </label>

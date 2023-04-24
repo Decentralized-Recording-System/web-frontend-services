@@ -90,26 +90,25 @@ const newUserForm = () => {
   return (
     <Layout>
       <div className="flex-col items-center justify-center w-full h-full px-4 bg-slate-900">
-        <div className="h-24">
+        <div className="py-6 pl-4 font-bold ">
           <h1 className="text-white">Create New User Form</h1>
         </div>
-        <div className="flex-col w-full h-full bg-gray-700 ">
+        <div className="flex-col w-full pb-4 bg-gray-800 rounded-2xl">
           {loading ? (
             <Loader />
           ) : (
             <div className="grid grid-cols-1 px-4 divide-y">
               <div className="flex items-center justify-between h-32">
                 <div className="flex-col text-white">
-                  <h1>Address</h1>
+                  <h1 className="font-bold">Address</h1>
                   <p>{id}</p>
                 </div>
                 <div className="flex-col text-white">
-                  <h1>Score</h1>
+                  <h1 className="font-bold">Score</h1>
                   <p>80</p>
                 </div>
               </div>
               <div className="flex-col items-center justify-center text-white">
-                <h1>Tip</h1>
                 <ListDetail
                   braking={"braking"}
                   dangerousBrake={"dangerousBrake"}
@@ -120,7 +119,7 @@ const newUserForm = () => {
                   date={"date"}
                   score={"score"}
                 />
-                <div className="flex-col h-56 bg-slate-400">
+                <div className="flex-col h-56 bg-slate-700">
                   <div className="flex-col">
                     {userData &&
                       userData.map((item: ObjectDetailData, index: number) => {
@@ -140,14 +139,14 @@ const newUserForm = () => {
                   </div>
                 </div>
                 <div>
-                  <label className="block mb-2 text-sm font-medium text-white">
+                  <label className="block mt-2 mb-2 text-sm font-medium text-white">
                     Promotion
                   </label>
 
                   <button
                     id="dropdownDividerButton"
                     data-dropdown-toggle="dropdownDivider"
-                    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    className="text-white bg-green-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     type="button"
                     onClick={dropdownSelect}
                   >

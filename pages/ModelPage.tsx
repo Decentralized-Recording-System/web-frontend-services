@@ -34,11 +34,16 @@ const ModelPage = () => {
           <Loader />
         ) : (
           <div>
-            <h1 className="text-white">Model Contract/Model</h1>
-            {model &&
-              model.map((data) => {
-                return <ListModel name={data.modelContractName} />;
-              })}
+            <div className="h-full py-6 pl-4 font-bold text">
+              <h1 className="text-white">Model Contract/Model</h1>
+            </div>
+
+            <div className="flex flex-wrap">
+              {model &&
+                model.map((data) => {
+                  return <ListModel name={data.modelContractName} />;
+                })}
+            </div>
             <Link href="/createNewContract">
               <button className="px-4 py-2 mt-4 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 ">
                 create new Model

@@ -7,9 +7,9 @@ type ListProps = {
 
 const ListContract = (props: ListProps) => {
   return (
-    <div className="flex flex-col w-full mb-6 ">
-      <div className="text-white">{props.name}</div>
-      <div className="text-white">{props.detail}</div>
+    <div className="flex w-full mb-4 ">
+      <div className="font-bold text-white">{props.name}</div>
+      <div className="pl-4 text-white">{props.detail}</div>
     </div>
   );
 };
