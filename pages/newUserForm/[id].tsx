@@ -16,13 +16,39 @@ const newUserForm = () => {
   const [promotionCode, setPromotionCode] = useState<ObjectPromotionData[]>();
   const user = Cookies.get("accessToken");
   const [open, setOpen] = useState(false);
-  const [data, setData] = useState("");
+  const [data, setData] = useState<any>({});
   const dropdownSelect = () => {
     setOpen(!open);
   };
   const selectData = (data: any) => {
     setData(data);
     setOpen(false);
+  };
+  const sendContract = (address: any, promotionCodeId: any) => {
+    try {
+      axios
+        .post(
+          url + "/promotion-code/sent",
+          {
+            address: address,
+            promotionCodeId: promotionCodeId,
+          },
+          {
+            headers: {
+              Authorization: "Bearer " + user,
+            },
+          }
+        )
+        .then((response) => {
+          if (response.status == 200) {
+            router.push("/olduser");
+          } else if (response.status == 400) {
+            console.log(response.status);
+          }
+        });
+    } catch (error) {
+      console.log(error);
+    }
   };
   useEffect(() => {
     try {
@@ -125,7 +151,7 @@ const newUserForm = () => {
                     type="button"
                     onClick={dropdownSelect}
                   >
-                    {data != "" ? data : <p>Select Your promotion</p>}
+                    {data.id != null ? data.name : <p>Select Your promotion</p>}
                     <svg
                       className="w-4 h-4 ml-2"
                       aria-hidden="true"
@@ -159,7 +185,10 @@ const newUserForm = () => {
                                 <button
                                   className="block w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                   onClick={() =>
-                                    selectData(item.promotionCodeName)
+                                    selectData({
+                                      name: item.promotionCodeName,
+                                      id: item.promotionCodeId,
+                                    })
                                   }
                                 >
                                   {item.promotionCodeName}
@@ -174,8 +203,11 @@ const newUserForm = () => {
                   )}
                 </div>
 
-                <button className="px-4 py-2 mt-4 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 ">
-                  Request
+                <button
+                  className="px-4 py-2 mt-4 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 "
+                  onClick={() => sendContract(id, data.id)}
+                >
+                  Send Contract
                 </button>
               </div>
             </div>

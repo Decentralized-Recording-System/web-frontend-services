@@ -4,6 +4,7 @@ import axios from "axios";
 import { url } from "../constant/url";
 import Cookies from "js-cookie";
 import { log } from "console";
+import router from "next/router";
 const inputValue = [
   {
     type: "text",
@@ -99,6 +100,7 @@ const createNewContract = () => {
           )
           .then((response) => {
             if (response.status == 200) {
+              router.push("/ModelPage");
               setLoading(false);
             } else if (response.status == 400) {
               console.log(response.status);
@@ -141,7 +143,7 @@ const createNewContract = () => {
                   size={40}
                 />
                 <input
-                  className="bg-gray-50 border mb-2 border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-2"
+                  className="bg-gray-50 border mb-2 border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-2"
                   placeholder="More Detail"
                   onChange={handleChangeValue}
                   value={item.value}
@@ -152,29 +154,21 @@ const createNewContract = () => {
               </div>
             );
           })}
-          <button
-            className="px-4 py-2 mt-4 mb-4 font-bold text-black bg-blue-500 rounded hover:bg-blue-700"
-            onClick={addInput}
-          >
-            add more detail
-          </button>
+          <div className="flex flex-col">
+            <button
+              className="w-1/5 px-4 py-2 mt-4 mb-4 font-bold text-black bg-blue-500 rounded hover:bg-blue-700"
+              onClick={addInput}
+            >
+              add more detail
+            </button>
 
-          <label className="block mb-2 text-sm font-medium text-black">
-            Promotion Code
-          </label>
-          <input
-            type="text"
-            id="first_name"
-            className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Promotion Code"
-            required
-          />
-          <button
-            className="px-4 py-2 mt-4 font-bold text-black bg-blue-500 rounded hover:bg-blue-700 "
-            onClick={sendModelToUser}
-          >
-            send
-          </button>
+            <button
+              className="w-1/5 px-4 py-2 mt-4 font-bold text-black bg-blue-500 rounded hover:bg-blue-700"
+              onClick={sendModelToUser}
+            >
+              send
+            </button>
+          </div>
         </div>
       </div>
     </Layout>

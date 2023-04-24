@@ -10,12 +10,14 @@ import ListBlockchainActive from "../components/list_blockchain_status_active";
 import ListBlockchainPending from "../components/list_blockchain_status_pending";
 import ListSentEmail from "../components/list_send_email_status_sent";
 import ListUnSentEmail from "../components/list_send_email_status_unsend";
+import ListSignContract from "../components/list_sign_comntract";
 
 const SignUser = () => {
   const [userData, setUserData] = useState<ObjectCompanyModel[]>();
   const [companyData, setCompanyData] = useState<any>();
   const user = Cookies.get("accessToken");
   const [loading, setLoading] = useState(false);
+  const [fetch, setFetch] = useState(false);
   useEffect(() => {
     try {
       setLoading(true);
@@ -47,7 +49,8 @@ const SignUser = () => {
           });
       }
     } catch (error) {}
-  }, [companyData]);
+  }, [companyData, fetch]);
+
   return (
     <Layout>
       <div className="flex-col items-center justify-center w-full min-h-full px-4 bg-slate-900">
@@ -71,16 +74,20 @@ const SignUser = () => {
               {userData &&
                 userData
                   .filter((item) => {
-                    return item.userStatus === "active";
+                    return (
+                      item.userStatus === "active" && item.status === "pending"
+                    );
                   })
                   .map((item: ObjectCompanyModel, index: number) => {
                     return (
-                      <ListBlockchainActive
+                      <ListSignContract
                         _id={index + 1}
                         contractId={item.contractId}
                         contractValue={item.contractValue}
                         status={item.userStatus}
                         nonFunction={true}
+                        setFetch={setFetch}
+                        fetch={fetch}
                       />
                     );
                   })}

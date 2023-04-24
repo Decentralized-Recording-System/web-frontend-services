@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { url } from "../constant/url";
 import Cookies from "js-cookie";
+import router from "next/router";
 
 type ListProps = {
   _id: any;
@@ -9,33 +10,41 @@ type ListProps = {
   contractValue: any;
   status: any;
   userId: any;
+  setFetch: any;
+  fetch: any;
 };
 
 const ListUnSentEmail = (props: ListProps) => {
   const user = Cookies.get("accessToken");
-  const [status, setStatus] = useState<any>(false);
-  const sendEmail = () => {
-    console.log(props.contractId);
-    console.log(url + "/contract/company/email/" + props.contractId);
+  // const sendEmail = () => {
+  //   console.log(props.contractId);
+  //   console.log(url + "/contract/company/email/" + props.contractId);
 
-    axios
-      .post(
-        url + "/contract/company/email/" + props.contractId,
-        {},
-        {
-          headers: {
-            Authorization: "Bearer " + user,
-          },
-        }
-      )
-      .then((response) => {
-        if (response.status == 200) {
-          setStatus(true);
-        } else if (response.status == 400) {
-          console.log(response.status);
-        }
-      });
+  //   axios
+  //     .post(
+  //       url + "/contract/company/email/" + props.contractId,
+  //       {},
+  //       {
+  //         headers: {
+  //           Authorization: "Bearer " + user,
+  //         },
+  //       }
+  //     )
+  //     .then((response) => {
+  //       if (response.status == 200) {
+  //         props.setFetch(!props.fetch);
+  //       } else if (response.status == 400) {
+  //         console.log(response.status);
+  //       }
+  //     });
+  // };
+
+  const sendEmail = (data: any) => {
+    console.log(data);
+
+    router.push(`/oneOldUser/${data}`);
   };
+
   return (
     <div className="flex items-center justify-center h-10">
       <div className="w-1/12 text-gray-50">{props._id}</div>
@@ -58,10 +67,10 @@ const ListUnSentEmail = (props: ListProps) => {
       <div className="w-2/12 text-gray-50">
         {props.status === "notSend" ? (
           <button
-            onClick={sendEmail}
+            onClick={() => sendEmail(props.contractId)}
             className="w-2/4 h-full px-3 bg-indigo-700 rounded-md"
           >
-            <p>Send Email</p>
+            <p>View Detail</p>
           </button>
         ) : (
           <div></div>

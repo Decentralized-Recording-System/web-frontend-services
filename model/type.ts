@@ -15,6 +15,18 @@ export interface ObjectDetailData{
         date: any,
         score: any
 }
+export interface ObjectContractData{
+    _id: any,
+    contractId: any,
+    promotionCodeId: any,
+    companyId: any,
+    userId: any,
+    carId: any,
+    contractValue: any,
+    contractData: any,
+    start:any,
+    expire:any
+}
 export interface ObjectPromotionData{
     _id: any,
     promotionCodeId: any,

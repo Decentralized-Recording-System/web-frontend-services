@@ -11,12 +11,12 @@ import ListBlockchainPending from "../components/list_blockchain_status_pending"
 import ListSentEmail from "../components/list_send_email_status_sent";
 import ListUnSentEmail from "../components/list_send_email_status_unsend";
 
-const OldUser = () => {
+const OwnerContract = () => {
   const [userData, setUserData] = useState<ObjectCompanyModel[]>();
   const [companyData, setCompanyData] = useState<any>();
   const user = Cookies.get("accessToken");
   const [loading, setLoading] = useState(false);
-  const [fetch, setFetch] = useState(false);
+
   useEffect(() => {
     try {
       setLoading(true);
@@ -32,8 +32,6 @@ const OldUser = () => {
         });
 
       if (companyData) {
-        console.log(url + "/company/users/" + companyData);
-
         axios
           .get(url + "/contract/company/" + companyData, {
             headers: {
@@ -42,49 +40,47 @@ const OldUser = () => {
           })
           .then((data) => {
             setUserData(data["data"]["data"]);
-            console.log(data["data"]["data"]);
-
             setLoading(false);
           });
       }
     } catch (error) {}
-  }, [companyData, fetch]);
+  }, [companyData]);
+
   return (
     <Layout>
       <div className="flex-col items-center justify-center w-full min-h-full px-4 bg-slate-900">
         <div className="h-24">
-          <h1 className="text-white">Contract User </h1>
+          <h1 className="text-white">My Own Contract </h1>
         </div>
         {loading ? (
           <Loader />
         ) : (
-          <div className="flex-col w-full h-full pb-2 bg-gray-700 rounded-md">
+          <div className="flex-col w-full h-full pb-4 bg-gray-700 rounded-md">
             <div className="grid grid-cols-1 px-4 divide-y ">
-              <h1 className="mt-4 mb-4 text-2xl text-white">Contract User</h1>
+              <h1 className="mt-4 mb-4 text-2xl text-white">My Own Contract</h1>
               <ListSentEmail
                 _id={"Number"}
                 contractId={"Contract ID"}
                 contractValue={"Contract Value"}
-                status={"User status"}
+                status={"status"}
                 nonFunction={false}
               />
 
               {userData &&
                 userData
-                  .filter((item) => {
-                    return item.emailStatus === "notSend";
-                  })
+                  .filter(
+                    (item) =>
+                      item.status == "active" && item.userStatus == "active"
+                  )
                   .map((item: ObjectCompanyModel, index: number) => {
                     console.log(item);
                     return (
-                      <ListUnSentEmail
+                      <ListBlockchainActive
                         _id={index + 1}
                         contractId={item.contractId}
                         contractValue={item.contractValue}
-                        status={item.emailStatus}
-                        userId={item.userId}
-                        setFetch={setFetch}
-                        fetch={fetch}
+                        status={item.status}
+                        nonFunction={true}
                       />
                     );
                   })}
@@ -96,4 +92,4 @@ const OldUser = () => {
   );
 };
 
-export default OldUser;
+export default OwnerContract;

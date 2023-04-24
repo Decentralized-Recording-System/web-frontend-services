@@ -1,5 +1,7 @@
-import router from "next/router";
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { url } from "../constant/url";
+import Cookies from "js-cookie";
 
 type ListProps = {
   _id: any;
@@ -7,11 +9,30 @@ type ListProps = {
   contractValue: any;
   status: any;
   nonFunction: any;
+  setFetch: any;
+  fetch: any;
 };
 
-const ListBlockchainActive = (props: ListProps) => {
-  const sendEmail = (data: any) => {
-    router.push(`/newMyContract/${data}`);
+const ListSignContract = (props: ListProps) => {
+  const user = Cookies.get("accessToken");
+  const sendEmail = () => {
+    axios
+      .post(
+        url + "/contract/company/sign/" + props.contractId,
+        {},
+        {
+          headers: {
+            Authorization: "Bearer " + user,
+          },
+        }
+      )
+      .then((response) => {
+        if (response.status == 200) {
+          props.setFetch(!props.fetch);
+        } else if (response.status == 400) {
+          console.log(response.status);
+        }
+      });
   };
   return (
     <div className="flex items-center justify-center h-10">
@@ -30,10 +51,10 @@ const ListBlockchainActive = (props: ListProps) => {
       <div className="w-2/12 text-gray-50">
         {props.status === "active" && props.nonFunction === true ? (
           <button
-            onClick={() => sendEmail(props.contractId)}
+            onClick={() => sendEmail()}
             className="w-2/4 h-full px-3 bg-indigo-700 rounded-md"
           >
-            <p>View Detail</p>
+            <p>Sign Contract</p>
           </button>
         ) : (
           <div></div>
@@ -43,7 +64,4 @@ const ListBlockchainActive = (props: ListProps) => {
   );
 };
 
-export default ListBlockchainActive;
-function setFetch(arg0: boolean) {
-  throw new Error("Function not implemented.");
-}
+export default ListSignContract;
