@@ -6,9 +6,9 @@ type ListProps = {
 
 const ListModel = (props: ListProps) => {
   return (
-    <div className="flex w-full mb-6 h-36">
-      <div className="w-4/12 bg-green-300 ">{`${props.name} Model`}</div>
-      <div className="w-8/12 bg-gray-700"></div>
+    <div className="flex w-1/6 mb-6 h-36">
+      <div className="w-9/12 bg-green-500 ">{`${props.name} Model`}</div>
+      <div className="w-3/12 bg-gray-700"></div>
     </div>
   );
 };

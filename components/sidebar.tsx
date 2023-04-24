@@ -11,7 +11,7 @@ const Sidebar = () => {
   };
   return (
     <aside className="w-full h-full" aria-label="Sidebar">
-      <div className="h-full px-3 py-4 overflow-y-auto rounded bg-slate-800">
+      <div className="h-full px-3 py-4 rounded bg-slate-800">
         <ul className="h-full space-y-2">
           <li>
             <Link
@@ -20,7 +20,7 @@ const Sidebar = () => {
             >
               <svg
                 aria-hidden="true"
-                className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-900"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +31,7 @@ const Sidebar = () => {
                   clip-rule="evenodd"
                 ></path>
               </svg>
-              <span className="flex-1 ml-3 text-white whitespace-nowrap">
+              <span className="flex-1 ml-3 text-white whitespace-nowrap hover:text-gray-900">
                 New User
               </span>
             </Link>
@@ -43,7 +43,7 @@ const Sidebar = () => {
             >
               <svg
                 aria-hidden="true"
-                className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-900"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +54,7 @@ const Sidebar = () => {
                   clip-rule="evenodd"
                 ></path>
               </svg>
-              <span className="flex-1 ml-3 text-white whitespace-nowrap">
+              <span className="flex-1 ml-3 text-white whitespace-nowrap hover:text-gray-900">
                 Contract User
               </span>
             </Link>
@@ -66,7 +66,7 @@ const Sidebar = () => {
             >
               <svg
                 aria-hidden="true"
-                className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-900"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +77,7 @@ const Sidebar = () => {
                   clip-rule="evenodd"
                 ></path>
               </svg>
-              <span className="flex-1 ml-3 text-white whitespace-nowrap">
+              <span className="flex-1 ml-3 text-white whitespace-nowrap hover:text-gray-900">
                 Sign User
               </span>
             </Link>
@@ -89,7 +89,7 @@ const Sidebar = () => {
             >
               <svg
                 aria-hidden="true"
-                className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-900"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -100,7 +100,7 @@ const Sidebar = () => {
                   clip-rule="evenodd"
                 ></path>
               </svg>
-              <span className="flex-1 ml-3 text-white whitespace-nowrap">
+              <span className="flex-1 ml-3 text-white whitespace-nowrap hover:text-gray-900">
                 My Own Contract
               </span>
             </Link>
@@ -113,7 +113,7 @@ const Sidebar = () => {
             >
               <svg
                 aria-hidden="true"
-                className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-900"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -124,7 +124,7 @@ const Sidebar = () => {
                   clip-rule="evenodd"
                 ></path>
               </svg>
-              <span className="flex-1 ml-3 text-white whitespace-nowrap">
+              <span className="flex-1 ml-3 text-white whitespace-nowrap hover:text-gray-900">
                 Model Contracts
               </span>
             </Link>
@@ -136,7 +136,7 @@ const Sidebar = () => {
             >
               <svg
                 aria-hidden="true"
-                className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-900"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -147,7 +147,7 @@ const Sidebar = () => {
                   clip-rule="evenodd"
                 ></path>
               </svg>
-              <span className="flex-1 ml-3 text-white whitespace-nowrap">
+              <span className="flex-1 ml-3 text-white whitespace-nowrap hover:text-gray-900">
                 Promotion Code
               </span>
             </Link>
@@ -155,12 +155,12 @@ const Sidebar = () => {
 
           <li>
             <button
-              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-black hover:bg-gray-100 hover:text-black"
               onClick={logOut}
             >
               <svg
                 aria-hidden="true"
-                className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-900"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -171,7 +171,7 @@ const Sidebar = () => {
                   clip-rule="evenodd"
                 ></path>
               </svg>
-              <span className="flex-1 ml-3 text-white whitespace-nowrap">
+              <span className="flex-1 ml-3 text-white whitespace-nowrap hover:text-gray-900">
                 Log out
               </span>
             </button>

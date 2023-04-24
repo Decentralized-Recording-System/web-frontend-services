@@ -114,10 +114,10 @@ const createNewContract = () => {
 
   return (
     <Layout>
-      <div className="flex-col items-center justify-center w-full h-full px-4 bg-slate-900">
+      <div className="flex-col items-center justify-center w-full h-full px-4 overflow-y-auto bg-slate-900">
         <h1 className="text-black ">Model Contract/New Contract/1</h1>
-        <div className="flex-col w-full h-full px-5 pt-5 bg-gray-700">
-          <label className="block mb-2 text-sm font-medium text-black">
+        <div className="flex-col w-full px-5 pt-5 pb-5 ">
+          <label className="block mb-2 text-sm font-medium text-white">
             Model Name
           </label>
           <input
@@ -133,6 +133,9 @@ const createNewContract = () => {
           {arrValue.map((item, i) => {
             return (
               <div>
+                <label className="block mb-2 text-sm font-medium text-white">
+                  Topic
+                </label>
                 <input
                   className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/5 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="More Topic Detail"
@@ -142,6 +145,9 @@ const createNewContract = () => {
                   type={item.type}
                   size={40}
                 />
+                <label className="block mt-2 text-sm font-medium text-white">
+                  Describe detail
+                </label>
                 <input
                   className="bg-gray-50 border mb-2 border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-2"
                   placeholder="More Detail"
@@ -156,14 +162,14 @@ const createNewContract = () => {
           })}
           <div className="flex flex-col">
             <button
-              className="w-1/5 px-4 py-2 mt-4 mb-4 font-bold text-black bg-blue-500 rounded hover:bg-blue-700"
+              className="w-1/5 px-4 py-2 mt-4 mb-4 font-bold text-white bg-green-500 rounded hover:bg-green-700"
               onClick={addInput}
             >
               add more detail
             </button>
 
             <button
-              className="w-1/5 px-4 py-2 mt-4 font-bold text-black bg-blue-500 rounded hover:bg-blue-700"
+              className="w-1/5 px-4 py-2 mt-4 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
               onClick={sendModelToUser}
             >
               send

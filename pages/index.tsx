@@ -16,28 +16,26 @@ const Login = () => {
   const logIn = (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    try {
-      setLoading(true);
+    setLoading(true);
 
-      axios
-        .post(url + "/company/login", {
-          email: email,
-          password: password,
-        })
-        .then((response) => {
-          if (response.status == 200) {
-            Cookies.set("loggedin", "true");
-            router.push("/new_user");
-            Cookies.set("accessToken", response["data"]["accessToken"]);
-            setLoading(false);
-          } else if (response.status == 400) {
-            console.log(response.status);
-            router.push("/");
-          }
-        });
-    } catch (error) {
-      console.log(error);
-    }
+    axios
+      .post(url + "/company/login", {
+        email: email,
+        password: password,
+      })
+      .then((response) => {
+        if (response.status == 200) {
+          Cookies.set("loggedin", "true");
+          router.push("/new_user");
+          Cookies.set("accessToken", response["data"]["accessToken"]);
+        } else {
+          console.log(response.status);
+        }
+      })
+      .catch(() => {})
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (

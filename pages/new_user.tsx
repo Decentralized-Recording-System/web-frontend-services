@@ -31,22 +31,24 @@ const NewUser = () => {
 
   return (
     <Layout>
-      <div className="flex-col items-center justify-center w-full h-full px-4 bg-slate-900">
-        <div className="h-24">
-          <h1 className="text-white">New User </h1>
+      <div className="flex-col items-center justify-center w-full min-h-full px-4 bg-slate-900">
+        <div className="h-full py-6 pl-4 font-bold text">
+          <h1 className="text-xl text-white">New User </h1>
         </div>
         {loading ? (
           <Loader />
         ) : (
-          <div className="flex-col w-full h-full bg-gray-700 ">
+          <div className="flex-col w-full h-full ">
             <div className="grid grid-cols-1 px-4 divide-y ">
-              <ListNewContact
-                id={"ID"}
-                address={"Address"}
-                score={"Score"}
-                date={"Date"}
-                updateCount={"Update Count"}
-              />
+              <div className="w-full bg-gray-800">
+                <ListNewContact
+                  id={"ID"}
+                  address={"Address"}
+                  score={"Score"}
+                  date={"Date"}
+                  updateCount={"Update Count"}
+                />
+              </div>
               {userData &&
                 userData.map((item: ObjectData, index: number) => {
                   return (
@@ -68,19 +70,5 @@ const NewUser = () => {
     </Layout>
   );
 };
-
-// export async function getServerSideProps() {
-//   const { user } = useAuth();
-//   const res = await fetch(url + "/company/users", {
-//     headers: {
-//       Authorization: "Bearer " + user,
-//     },
-//     // ---------------------------^ this req is the browser request to the getServersideProps
-//   });
-//   const data = await res.json();
-//   console.log(data);
-//   // Pass data to the page via props
-//   return { props: { data } };
-// }
 
 export default NewUser;

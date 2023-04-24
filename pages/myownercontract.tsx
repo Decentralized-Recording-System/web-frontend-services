@@ -49,22 +49,23 @@ const OwnerContract = () => {
   return (
     <Layout>
       <div className="flex-col items-center justify-center w-full min-h-full px-4 bg-slate-900">
-        <div className="h-24">
+        <div className="h-full py-6 pl-4 font-bold text">
           <h1 className="text-white">My Own Contract </h1>
         </div>
         {loading ? (
           <Loader />
         ) : (
-          <div className="flex-col w-full h-full pb-4 bg-gray-700 rounded-md">
+          <div className="flex-col w-full h-full pb-4 rounded-md">
             <div className="grid grid-cols-1 px-4 divide-y ">
-              <h1 className="mt-4 mb-4 text-2xl text-white">My Own Contract</h1>
-              <ListSentEmail
-                _id={"Number"}
-                contractId={"Contract ID"}
-                contractValue={"Contract Value"}
-                status={"status"}
-                nonFunction={false}
-              />
+              <div className="w-full bg-gray-800">
+                <ListSentEmail
+                  _id={"Number"}
+                  contractId={"Contract ID"}
+                  contractValue={"Contract Value"}
+                  status={"status"}
+                  nonFunction={false}
+                />
+              </div>
 
               {userData &&
                 userData
