@@ -11,6 +11,8 @@ import { useAuth } from "../context/authContext";
 const Login = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const logIn = (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
@@ -19,17 +21,18 @@ const Login = () => {
 
       axios
         .post(url + "/company/login", {
-          email: "in.spaywer1@gmail.com",
-          password: "1234",
+          email: email,
+          password: password,
         })
         .then((response) => {
           if (response.status == 200) {
             Cookies.set("loggedin", "true");
-            router.push("/dashboard");
+            router.push("/new_user");
             Cookies.set("accessToken", response["data"]["accessToken"]);
             setLoading(false);
           } else if (response.status == 400) {
             console.log(response.status);
+            router.push("/");
           }
         });
     } catch (error) {
@@ -53,6 +56,9 @@ const Login = () => {
                 type="text"
                 placeholder="Email"
                 className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
               />
             </div>
             <div className="mt-4">
@@ -63,6 +69,9 @@ const Login = () => {
                 type="text"
                 placeholder="Password"
                 className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
               />
             </div>
             <div className="flex items-center justify-between mt-2">
