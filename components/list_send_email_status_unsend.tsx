@@ -16,28 +16,7 @@ type ListProps = {
 
 const ListUnSentEmail = (props: ListProps) => {
   const user = Cookies.get("accessToken");
-  // const sendEmail = () => {
-  //   console.log(props.contractId);
-  //   console.log(url + "/contract/company/email/" + props.contractId);
-
-  //   axios
-  //     .post(
-  //       url + "/contract/company/email/" + props.contractId,
-  //       {},
-  //       {
-  //         headers: {
-  //           Authorization: "Bearer " + user,
-  //         },
-  //       }
-  //     )
-  //     .then((response) => {
-  //       if (response.status == 200) {
-  //         props.setFetch(!props.fetch);
-  //       } else if (response.status == 400) {
-  //         console.log(response.status);
-  //       }
-  //     });
-  // };
+  
 
   const sendEmail = (data: any) => {
     console.log(data);

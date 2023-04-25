@@ -44,6 +44,4 @@ const ListBlockchainActive = (props: ListProps) => {
 };
 
 export default ListBlockchainActive;
-function setFetch(arg0: boolean) {
-  throw new Error("Function not implemented.");
-}
+
