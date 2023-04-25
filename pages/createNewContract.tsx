@@ -18,6 +18,7 @@ const createNewContract = () => {
   const [loading, setLoading] = useState(false);
   const [arrValue, setArrValue] = useState(inputValue);
   const [modelName, setModelName] = useState("");
+  const [value, setValue] = useState("");
   const [objectData, setObjectData] = useState({});
 
   const user = Cookies.get("accessToken");
@@ -62,6 +63,10 @@ const createNewContract = () => {
     setModelName(e.target.value);
     console.log(e.target.value);
   };
+  const handleChangeContract = (e: any) => {
+    e.preventDefault();
+    setValue(e.target.value);
+  };
   const sendModelToUser = useCallback(() => {
     setLoading(true);
 
@@ -81,6 +86,7 @@ const createNewContract = () => {
           oldState.push(result);
         }
         console.log({
+          modelContractValue: value,
           modelContractName: modelName,
           data: oldState,
         });
@@ -90,6 +96,7 @@ const createNewContract = () => {
             url + "/model-contract/company/create",
             {
               modelContractName: modelName,
+              modelContractValue: value,
               data: [oldState],
             },
             {
@@ -128,7 +135,18 @@ const createNewContract = () => {
             onChange={handleChangeModelName}
             value={modelName}
           />
-
+          <label className="block mb-2 text-sm font-medium text-white">
+            Contract Value
+          </label>
+          <input
+            type="text"
+            id="first_name"
+            className="bg-gray-50 border mb-2 border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/5 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="contract value"
+            required
+            onChange={handleChangeContract}
+            value={value}
+          />
           {arrValue.map((item, i) => {
             return (
               <div>
