@@ -119,7 +119,7 @@ const newUserForm = () => {
                   date={"date"}
                   score={"score"}
                 />
-                <div className="flex-col h-56 bg-slate-700">
+                <div className="flex-col bg-slate-700 h-auto">
                   <div className="flex-col">
                     {userData &&
                       userData.map((item: ObjectDetailData, index: number) => {
